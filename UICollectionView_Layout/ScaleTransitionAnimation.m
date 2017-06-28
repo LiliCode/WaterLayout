@@ -36,14 +36,14 @@
 
 - (void)showTransitionAnimation:(id<UIViewControllerContextTransitioning>)transitionContext
 {
-//    UIViewController *fromViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+    UIViewController *fromViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
-    
-//    [[transitionContext containerView] addSubview:fromViewController.view];
-    [[transitionContext containerView] addSubview:toViewController.view];
     
     CGRect frame = toViewController.view.frame;
     toViewController.view.frame = self.originRect;
+    
+    [[transitionContext containerView] addSubview:fromViewController.view];
+    [[transitionContext containerView] addSubview:toViewController.view];
     
     [UIView animateWithDuration:[self transitionDuration:transitionContext ] delay:0 usingSpringWithDamping:.7 initialSpringVelocity:0 options:0 animations:^{
         toViewController.view.frame = frame;
@@ -56,9 +56,9 @@
 - (void)hideTransitionAnimation:(id<UIViewControllerContextTransitioning>)transitionContext
 {
     UIViewController *fromViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
-//    UIViewController *toViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+    UIViewController *toViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     
-//    [[transitionContext containerView] addSubview:toViewController.view];
+    [[transitionContext containerView] addSubview:toViewController.view];
     [[transitionContext containerView] addSubview:fromViewController.view];
     
     [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0 usingSpringWithDamping:.7 initialSpringVelocity:0 options:0 animations:^{

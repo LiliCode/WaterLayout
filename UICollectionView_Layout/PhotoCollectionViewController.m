@@ -56,7 +56,7 @@ static NSString * const reuseIdentifier = @"Cell";
 //    layout.minimumLineSpacing = 8;
     
     
-    self.navigationController.delegate = self;
+    
     
     self.pushTransitionAnimation = [ScaleTransitionAnimation transitionWithOriginRect:CGRectMake(0, 0, 10, 10)];
     
@@ -64,7 +64,12 @@ static NSString * const reuseIdentifier = @"Cell";
     
 }
 
-
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.navigationController.delegate = self;
+}
 
 
 
@@ -95,7 +100,10 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSegueWithIdentifier:@"show" sender:[self.list objectAtIndex:indexPath.row]];
+//    [self performSegueWithIdentifier:@"show" sender:[self.list objectAtIndex:indexPath.row]];
+    ShowPhotoViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"show"];
+    vc.image = [self.list objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark <PhotoCollectionViewFlowLayout>

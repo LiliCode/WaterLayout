@@ -39,14 +39,16 @@
     UIViewController *fromViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     
-    CGRect frame = toViewController.view.frame;
+    UIView *fromView = [transitionContext viewForKey:UITransitionContextFromViewKey];
+    UIView *toView = [transitionContext viewForKey:UITransitionContextToViewKey];
+    //添加到从container中
+    [[transitionContext containerView] addSubview:toView];
+    
+    CGRect frame = toView.frame;
     toViewController.view.frame = self.originRect;
     
-    [[transitionContext containerView] addSubview:fromViewController.view];
-    [[transitionContext containerView] addSubview:toViewController.view];
-    
-    [UIView animateWithDuration:[self transitionDuration:transitionContext ] delay:0 usingSpringWithDamping:.7 initialSpringVelocity:0 options:0 animations:^{
-        toViewController.view.frame = frame;
+    [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0 usingSpringWithDamping:0.7f initialSpringVelocity:0 options:0 animations:^{
+        toView.frame = frame;
     } completion:^(BOOL finished) {
         [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
         NSLog(@"complete transition");
@@ -58,11 +60,13 @@
     UIViewController *fromViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     
-    [[transitionContext containerView] addSubview:toViewController.view];
-    [[transitionContext containerView] addSubview:fromViewController.view];
+    UIView *fromView = [transitionContext viewForKey:UITransitionContextFromViewKey];
+    UIView *toView = [transitionContext viewForKey:UITransitionContextToViewKey];
+    //添加到从container中
+    [[transitionContext containerView] addSubview:fromView];
     
-    [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0 usingSpringWithDamping:.7 initialSpringVelocity:0 options:0 animations:^{
-        fromViewController.view.frame = self.originRect;
+    [UIView animateWithDuration:[self transitionDuration:transitionContext ] delay:0 usingSpringWithDamping:.7 initialSpringVelocity:0 options:0 animations:^{
+        fromView.frame = self.originRect;
     } completion:^(BOOL finished) {
         [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
         NSLog(@"complete transition");

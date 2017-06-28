@@ -7,6 +7,8 @@
 //
 
 #import "ShowPhotoViewController.h"
+#import "UIViewController+Transition.h"
+#import "ScaleTransitionAnimation.h"
 
 @interface ShowPhotoViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
@@ -21,8 +23,14 @@
     
     self.imageView.image = self.image;
     
+    
 }
 
+
+- (IBAction)back:(UIBarButtonItem *)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 
 - (void)didReceiveMemoryWarning

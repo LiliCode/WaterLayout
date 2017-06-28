@@ -51,6 +51,9 @@
 		2256B5B31EFB711E0066B476 /* image28.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 2256B59B1EFB711E0066B476 /* image28.jpeg */; };
 		2256B5B41EFB711E0066B476 /* image29.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 2256B59C1EFB711E0066B476 /* image29.jpeg */; };
 		2256B5B51EFB711E0066B476 /* image30.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 2256B59D1EFB711E0066B476 /* image30.jpeg */; };
+		226E9E1F1F034DC400867C82 /* UIViewController+Transition.m in Sources */ = {isa = PBXBuildFile; fileRef = 226E9E1E1F034DC400867C82 /* UIViewController+Transition.m */; };
+		226E9E221F034E6800867C82 /* TransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 226E9E211F034E6800867C82 /* TransitionAnimation.m */; };
+		226E9E251F03707600867C82 /* ScaleTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 226E9E241F03707600867C82 /* ScaleTransitionAnimation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +130,12 @@
 		2256B59B1EFB711E0066B476 /* image28.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image28.jpeg; sourceTree = "<group>"; };
 		2256B59C1EFB711E0066B476 /* image29.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image29.jpeg; sourceTree = "<group>"; };
 		2256B59D1EFB711E0066B476 /* image30.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image30.jpeg; sourceTree = "<group>"; };
+		226E9E1D1F034DC400867C82 /* UIViewController+Transition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Transition.h"; sourceTree = "<group>"; };
+		226E9E1E1F034DC400867C82 /* UIViewController+Transition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Transition.m"; sourceTree = "<group>"; };
+		226E9E201F034E6800867C82 /* TransitionAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionAnimation.h; sourceTree = "<group>"; };
+		226E9E211F034E6800867C82 /* TransitionAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransitionAnimation.m; sourceTree = "<group>"; };
+		226E9E231F03707600867C82 /* ScaleTransitionAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScaleTransitionAnimation.h; sourceTree = "<group>"; };
+		226E9E241F03707600867C82 /* ScaleTransitionAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScaleTransitionAnimation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +186,8 @@
 		2256B51E1EFA59550066B476 /* UICollectionView_Layout */ = {
 			isa = PBXGroup;
 			children = (
+				226E9E1C1F034D9300867C82 /* Transition */,
+				226E9E1B1F034D8700867C82 /* Layout */,
 				2256B5221EFA59550066B476 /* AppDelegate.h */,
 				2256B5231EFA59550066B476 /* AppDelegate.m */,
 				2256B5251EFA59550066B476 /* ViewController.h */,
@@ -187,8 +198,6 @@
 				2256B5591EFA5A9E0066B476 /* PhotoCollectionViewCell.m */,
 				2256B56D1EFA5E190066B476 /* ShowPhotoViewController.h */,
 				2256B56E1EFA5E190066B476 /* ShowPhotoViewController.m */,
-				2256B5701EFA660F0066B476 /* CollectionViewWaterLayout.h */,
-				2256B5711EFA660F0066B476 /* CollectionViewWaterLayout.m */,
 				2256B5281EFA59550066B476 /* Main.storyboard */,
 				2256B52E1EFA59550066B476 /* Assets.xcassets */,
 				2256B5301EFA59550066B476 /* LaunchScreen.storyboard */,
@@ -262,6 +271,28 @@
 				2256B5621EFA5C040066B476 /* image7.jpeg */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		226E9E1B1F034D8700867C82 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				2256B5701EFA660F0066B476 /* CollectionViewWaterLayout.h */,
+				2256B5711EFA660F0066B476 /* CollectionViewWaterLayout.m */,
+			);
+			name = Layout;
+			sourceTree = "<group>";
+		};
+		226E9E1C1F034D9300867C82 /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				226E9E1D1F034DC400867C82 /* UIViewController+Transition.h */,
+				226E9E1E1F034DC400867C82 /* UIViewController+Transition.m */,
+				226E9E201F034E6800867C82 /* TransitionAnimation.h */,
+				226E9E211F034E6800867C82 /* TransitionAnimation.m */,
+				226E9E231F03707600867C82 /* ScaleTransitionAnimation.h */,
+				226E9E241F03707600867C82 /* ScaleTransitionAnimation.m */,
+			);
+			name = Transition;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -434,8 +465,11 @@
 				2256B5271EFA59550066B476 /* ViewController.m in Sources */,
 				2256B55A1EFA5A9E0066B476 /* PhotoCollectionViewCell.m in Sources */,
 				2256B5241EFA59550066B476 /* AppDelegate.m in Sources */,
+				226E9E221F034E6800867C82 /* TransitionAnimation.m in Sources */,
 				2256B5571EFA5A2C0066B476 /* PhotoCollectionViewController.m in Sources */,
 				2256B52D1EFA59550066B476 /* UICollectionView_Layout.xcdatamodeld in Sources */,
+				226E9E1F1F034DC400867C82 /* UIViewController+Transition.m in Sources */,
+				226E9E251F03707600867C82 /* ScaleTransitionAnimation.m in Sources */,
 				2256B5211EFA59550066B476 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -672,6 +706,7 @@
 				2256B54E1EFA59550066B476 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2256B54F1EFA59550066B476 /* Build configuration list for PBXNativeTarget "UICollectionView_LayoutTests" */ = {
 			isa = XCConfigurationList;
@@ -680,6 +715,7 @@
 				2256B5511EFA59550066B476 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2256B5521EFA59550066B476 /* Build configuration list for PBXNativeTarget "UICollectionView_LayoutUITests" */ = {
 			isa = XCConfigurationList;
@@ -688,6 +724,7 @@
 				2256B5541EFA59550066B476 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

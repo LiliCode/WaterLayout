@@ -11,6 +11,12 @@
 #import "ShowPhotoViewController.h"
 #import "CollectionViewWaterLayout.h"
 
+#import "UIViewController+Transition.h"
+#import "ScaleTransitionAnimation.h"
+
+
+
+
 @interface PhotoCollectionViewController ()<CollectionViewWaterLayoutDelegate>
 @property (strong , nonatomic) NSMutableArray *list;
 
@@ -48,6 +54,13 @@ static NSString * const reuseIdentifier = @"Cell";
 //    layout.edgeInsets = UIEdgeInsetsMake(8, 8, 8, 8);
 //    layout.minimumInteritemSpacing = 8;
 //    layout.minimumLineSpacing = 8;
+    
+    
+    self.navigationController.delegate = self;
+    
+    self.pushTransitionAnimation = [ScaleTransitionAnimation transitionWithOriginRect:CGRectMake(0, 0, 10, 10)];
+    
+    self.popTransitionAnimation = [ScaleTransitionAnimation transitionWithOriginRect:CGRectMake(0, 0, 10, 10)];
     
 }
 

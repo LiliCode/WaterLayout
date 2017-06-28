@@ -115,7 +115,13 @@
                             <constraint firstItem="eLk-Qu-6sk" firstAttribute="top" secondItem="MZx-K1-d1a" secondAttribute="bottom" id="quh-8x-RQ3"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="展示图片" id="RKV-Y5-dor"/>
+                    <navigationItem key="navigationItem" title="展示图片" id="RKV-Y5-dor">
+                        <barButtonItem key="leftBarButtonItem" systemItem="rewind" id="t5v-Sp-2cS">
+                            <connections>
+                                <action selector="back:" destination="DXk-Gv-u98" id="0R5-SL-pmP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="eLk-Qu-6sk" id="79y-di-cih"/>
                     </connections>

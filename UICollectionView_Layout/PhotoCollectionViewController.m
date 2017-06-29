@@ -98,14 +98,16 @@ static NSString * const reuseIdentifier = @"Cell";
     
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
     CGRect rect = [cell.superview convertRect:cell.frame toView:self.view]; //坐标转换
-    
+
     self.navigationController.delegate = self;
     self.pushTransitionAnimation = [ScaleTransitionAnimation transitionWithOriginRect:rect];
     self.popTransitionAnimation = [ScaleTransitionAnimation transitionWithOriginRect:rect];
     
     ShowPhotoViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"show"];
     vc.image = [self.list objectAtIndex:indexPath.row];
+    vc.originRect = rect;
     [self.navigationController pushViewController:vc animated:YES];
+//    [self presentViewController:vc animated:YES completion:nil];
 }
 
 #pragma mark <PhotoCollectionViewFlowLayout>

@@ -41,16 +41,25 @@
     }
     
     self.imageView.center = self.view.center;
-    
+    self.imageView.userInteractionEnabled = YES;
     [self.view addSubview:self.imageView];
     
 //    self.view.backgroundColor = [UIColor redColor];
+//    self.transitioningDelegate = self;
+//    self.modalPresentationStyle = UIModalPresentationCustom;
+//    self.presentTransitionAnimation = [ScaleTransitionAnimation transitionWithOriginRect:self.originRect];
+//    self.dismissTransitionAnimation = [ScaleTransitionAnimation transitionWithOriginRect:self.originRect];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
 - (IBAction)back:(UIBarButtonItem *)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
 

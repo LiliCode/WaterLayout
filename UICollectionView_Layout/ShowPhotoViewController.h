@@ -14,6 +14,6 @@
 
 @property (strong , nonatomic) UIImageView *imageView;
 
-
+@property (assign , nonatomic) CGRect originRect;   // 模态使用
 
 @end

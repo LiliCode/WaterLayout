@@ -56,19 +56,13 @@ static NSString * const reuseIdentifier = @"Cell";
 //    layout.minimumLineSpacing = 8;
     
     
-    
-    
-    self.pushTransitionAnimation = [ScaleTransitionAnimation transitionWithOriginRect:CGRectMake(0, 0, 10, 10)];
-    
-    self.popTransitionAnimation = [ScaleTransitionAnimation transitionWithOriginRect:CGRectMake(0, 0, 10, 10)];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    self.navigationController.delegate = self;
+    self.navigationController.delegate = nil;
 }
 
 
@@ -101,6 +95,14 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
 //    [self performSegueWithIdentifier:@"show" sender:[self.list objectAtIndex:indexPath.row]];
+    
+    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+    CGRect rect = [cell.superview convertRect:cell.frame toView:self.view]; //坐标转换
+    
+    self.navigationController.delegate = self;
+    self.pushTransitionAnimation = [ScaleTransitionAnimation transitionWithOriginRect:rect];
+    self.popTransitionAnimation = [ScaleTransitionAnimation transitionWithOriginRect:rect];
+    
     ShowPhotoViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"show"];
     vc.image = [self.list objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:vc animated:YES];

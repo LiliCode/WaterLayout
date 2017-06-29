@@ -67,11 +67,11 @@ static char *kDismissTransitionAnimation = "kDismissTransitionAnimation";
 
 - (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC
 {
-    if (operation == UINavigationControllerOperationPush && [fromVC isEqual:self])
+    if (operation == UINavigationControllerOperationPush)
     {
         return self.pushTransitionAnimation;    //如果是push 过去
     }
-    else if (operation == UINavigationControllerOperationPop && [toVC isEqual:self])
+    else if (operation == UINavigationControllerOperationPop)
     {
         return self.popTransitionAnimation;     //如果是pop 回去
     }

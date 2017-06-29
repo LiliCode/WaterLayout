@@ -7,6 +7,7 @@
 //
 
 #import "ScaleTransitionAnimation.h"
+#import "ShowPhotoViewController.h"
 
 
 @interface ScaleTransitionAnimation ()
@@ -36,20 +37,25 @@
 
 - (void)showTransitionAnimation:(id<UIViewControllerContextTransitioning>)transitionContext
 {
-    UIViewController *fromViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
-    UIViewController *toViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+    ShowPhotoViewController *toViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     
-    UIView *fromView = [transitionContext viewForKey:UITransitionContextFromViewKey];
-    UIView *toView = [transitionContext viewForKey:UITransitionContextToViewKey];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:toViewController.imageView.image];
+    imageView.frame = self.originRect;
+    
+    toViewController.view.alpha = 0;
+    toViewController.imageView.hidden = YES;
     //添加到从container中
-    [[transitionContext containerView] addSubview:toView];
+    [[transitionContext containerView] addSubview:toViewController.view];
+    [[transitionContext containerView] addSubview:imageView];
     
-    CGRect frame = toView.frame;
-    toViewController.view.frame = self.originRect;
+    CGRect finalFrame = toViewController.imageView.frame;
     
-    [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0 usingSpringWithDamping:0.7f initialSpringVelocity:0 options:0 animations:^{
-        toView.frame = frame;
+    [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0 usingSpringWithDamping:0.5f initialSpringVelocity:0 options:0 animations:^{
+        imageView.frame = finalFrame;
+        toViewController.view.alpha = 1;
     } completion:^(BOOL finished) {
+        [imageView removeFromSuperview];
+        toViewController.imageView.hidden = NO;
         [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
         NSLog(@"complete transition");
     }];
@@ -57,17 +63,19 @@
 
 - (void)hideTransitionAnimation:(id<UIViewControllerContextTransitioning>)transitionContext
 {
-    UIViewController *fromViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
-    UIViewController *toViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+    ShowPhotoViewController *fromViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     
-    UIView *fromView = [transitionContext viewForKey:UITransitionContextFromViewKey];
     UIView *toView = [transitionContext viewForKey:UITransitionContextToViewKey];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:fromViewController.imageView.image];
+    imageView.frame = fromViewController.imageView.frame;
     //添加到从container中
-    [[transitionContext containerView] addSubview:fromView];
+    [[transitionContext containerView] addSubview:toView];
+    [[transitionContext containerView] addSubview:imageView];
     
-    [UIView animateWithDuration:[self transitionDuration:transitionContext ] delay:0 usingSpringWithDamping:.7 initialSpringVelocity:0 options:0 animations:^{
-        fromView.frame = self.originRect;
+    [UIView animateWithDuration:.3 animations:^{
+        imageView.frame = self.originRect;
     } completion:^(BOOL finished) {
+        [imageView removeFromSuperview];    //删除辅助视图
         [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
         NSLog(@"complete transition");
     }];

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2rH-eb-B9D">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -18,11 +18,11 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9r-LD-Llo">
-                                <rect key="frame" x="162.5" y="317" width="49" height="32"/>
+                                <rect key="frame" x="135.5" y="268" width="49" height="32"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
@@ -42,12 +42,61 @@
             </objects>
             <point key="canvasLocation" x="1455" y="793"/>
         </scene>
-        <!--图片浏览-->
+        <!--图片详情-->
+        <scene sceneID="aS8-ad-76p">
+            <objects>
+                <viewController id="Lzb-kP-QxO" customClass="DetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Pco-KM-dDq"/>
+                        <viewControllerLayoutGuide type="bottom" id="QJU-3t-7eS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1Mb-y4-tB7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mbL-n1-OVz">
+                                <rect key="frame" x="110" y="87" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="2Ho-tH-H77"/>
+                                    <constraint firstAttribute="height" constant="100" id="bfX-eF-sEv"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rE4-UH-CHP">
+                                <rect key="frame" x="9" y="220" width="303" height="340"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <mutableString key="text">可在转场动画发生的同时并行执行其他的动画，其作用与其说协调不如说辅助，主要在 Modal 转场和交互转场取消时使用，其他时候很少用到；遵守&lt;UIViewControllerTransitionCoordinator&gt;协议；由 UIKit 在转场时生成，UIViewController 在 iOS 7 中新增了方法transitionCoordinator()返回一个遵守该协议的对象，且该方法只在该控制器处于转场过程中才返回一个此类对象，不参与转场时返回 nil。
+
+总结下，5个协议只需要我们操心3个；实现一个最低限度可用的转场动画，我们只需要提供上面五个组件里的两个：转场代理和动画控制器即可，还有一个转场环境是必需的，不过这由系统提供；当进一步实现交互转场时，还需要我们提供交互控制器，也有现成的类供我们使用。</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rE4-UH-CHP" firstAttribute="leading" secondItem="1Mb-y4-tB7" secondAttribute="leading" constant="9" id="2vH-SN-ooP"/>
+                            <constraint firstItem="QJU-3t-7eS" firstAttribute="top" secondItem="rE4-UH-CHP" secondAttribute="bottom" constant="8" id="5mg-R2-jlu"/>
+                            <constraint firstAttribute="trailing" secondItem="rE4-UH-CHP" secondAttribute="trailing" constant="8" id="DVq-fC-z8d"/>
+                            <constraint firstItem="mbL-n1-OVz" firstAttribute="centerX" secondItem="1Mb-y4-tB7" secondAttribute="centerX" id="k4z-e0-8mV"/>
+                            <constraint firstItem="mbL-n1-OVz" firstAttribute="top" secondItem="Pco-KM-dDq" secondAttribute="bottom" constant="23" id="x8F-4Q-Q6V"/>
+                            <constraint firstItem="rE4-UH-CHP" firstAttribute="top" secondItem="mbL-n1-OVz" secondAttribute="bottom" constant="33" id="zVr-dl-UNl"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="图片详情" id="Cof-Ad-Gr5"/>
+                    <connections>
+                        <outlet property="logoImageView" destination="mbL-n1-OVz" id="aSC-co-TlP"/>
+                        <outlet property="textView" destination="rE4-UH-CHP" id="kEo-g8-upU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c5D-U8-AAO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3116" y="488"/>
+        </scene>
+        <!--图片列表-->
         <scene sceneID="euV-qE-i1V">
             <objects>
                 <collectionViewController id="vrl-VM-zhU" customClass="PhotoCollectionViewController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="lyJ-d0-o17">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewLayout key="collectionViewLayout" id="VFI-bt-kBd" customClass="CollectionViewWaterLayout"/>
@@ -81,13 +130,37 @@
                             <outlet property="delegate" destination="vrl-VM-zhU" id="hDN-0q-pOi"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="图片浏览" id="qeI-33-Kaw"/>
+                    <navigationItem key="navigationItem" title="图片列表" id="qeI-33-Kaw">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="8xX-Z3-LFa">
+                            <view key="customView" contentMode="scaleToFill" id="erP-kL-azl">
+                                <rect key="frame" x="233" y="5" width="71" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="oG8-yQ-BLr">
+                                        <rect key="frame" x="11" y="1" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="switchMode:" destination="vrl-VM-zhU" eventType="valueChanged" id="jgX-Up-xPE"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="oG8-yQ-BLr" firstAttribute="centerX" secondItem="erP-kL-azl" secondAttribute="centerX" id="TnZ-Up-VzM"/>
+                                    <constraint firstItem="oG8-yQ-BLr" firstAttribute="centerY" secondItem="erP-kL-azl" secondAttribute="centerY" id="jOc-mw-8xH"/>
+                                </constraints>
+                            </view>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="DXk-Gv-u98" kind="show" identifier="show" id="LDM-6d-Z9J"/>
+                        <segue destination="Lzb-kP-QxO" kind="show" identifier="detail" id="kCL-RR-0BF"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rAW-SA-1CC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2244" y="792.95352323838085"/>
         </scene>
-        <!--展示图片-->
+        <!--图片展示-->
         <scene sceneID="g2c-tV-MNy">
             <objects>
                 <viewController storyboardIdentifier="show" id="DXk-Gv-u98" customClass="ShowPhotoViewController" sceneMemberID="viewController">
@@ -96,16 +169,16 @@
                         <viewControllerLayoutGuide type="bottom" id="Dup-wr-xRN"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jIH-gH-4yj">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="展示图片" id="RKV-Y5-dor"/>
+                    <navigationItem key="navigationItem" title="图片展示" id="RKV-Y5-dor"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mAM-1q-vRu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2984.8000000000002" y="792.95352323838085"/>
+            <point key="canvasLocation" x="3116" y="1173"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="VkG-QU-yL7">

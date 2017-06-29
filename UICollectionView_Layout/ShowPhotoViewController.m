@@ -49,11 +49,19 @@
 //    self.modalPresentationStyle = UIModalPresentationCustom;
 //    self.presentTransitionAnimation = [ScaleTransitionAnimation transitionWithOriginRect:self.originRect];
 //    self.dismissTransitionAnimation = [ScaleTransitionAnimation transitionWithOriginRect:self.originRect];
+    
+    
+    
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (UIView *)transitionAnimationView
+{
+    return self.imageView;
 }
 
 

@@ -8,17 +8,20 @@
 
 #import "PhotoCollectionViewController.h"
 #import "PhotoCollectionViewCell.h"
-#import "ShowPhotoViewController.h"
 #import "CollectionViewWaterLayout.h"
 
 #import "UIViewController+Transition.h"
 #import "ScaleTransitionAnimation.h"
+#import "MoveTransitionAnimation.h"
 
+#import "ShowPhotoViewController.h"
+#import "DetailViewController.h"
 
 
 
 @interface PhotoCollectionViewController ()<CollectionViewWaterLayoutDelegate>
 @property (strong , nonatomic) NSMutableArray *list;
+@property (assign , nonatomic) BOOL flag;   //点击Cell的展示内容模式
 
 @end
 
@@ -63,8 +66,14 @@ static NSString * const reuseIdentifier = @"Cell";
     [super viewWillAppear:animated];
     
     self.navigationController.delegate = nil;
+    self.pushTransitionAnimation = nil;
+    self.popTransitionAnimation = nil;
 }
 
+- (IBAction)switchMode:(UISwitch *)sender
+{
+    self.flag = sender.isOn;
+}
 
 
 
@@ -94,19 +103,31 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-//    [self performSegueWithIdentifier:@"show" sender:[self.list objectAtIndex:indexPath.row]];
-    
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
     CGRect rect = [cell.superview convertRect:cell.frame toView:self.view]; //坐标转换
-
-    self.navigationController.delegate = self;
-    self.pushTransitionAnimation = [ScaleTransitionAnimation transitionWithOriginRect:rect];
-    self.popTransitionAnimation = [ScaleTransitionAnimation transitionWithOriginRect:rect];
     
-    ShowPhotoViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"show"];
-    vc.image = [self.list objectAtIndex:indexPath.row];
-    vc.originRect = rect;
-    [self.navigationController pushViewController:vc animated:YES];
+    if (self.flag)
+    {
+        //详情
+        self.navigationController.delegate = self;
+        self.pushTransitionAnimation = [MoveTransitionAnimation transitionWithOriginRect:rect];
+        
+        [self performSegueWithIdentifier:@"detail" sender:[self.list objectAtIndex:indexPath.row]];
+    }
+    else
+    {
+        //查看照片
+        self.navigationController.delegate = self;
+        self.pushTransitionAnimation = [ScaleTransitionAnimation transitionWithOriginRect:rect];
+        self.popTransitionAnimation = [ScaleTransitionAnimation transitionWithOriginRect:rect];
+        
+        [self performSegueWithIdentifier:@"show" sender:[self.list objectAtIndex:indexPath.row]];
+    }
+
+//    ShowPhotoViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"show"];
+//    vc.image = [self.list objectAtIndex:indexPath.row];
+//    vc.originRect = rect;
+//    [self.navigationController pushViewController:vc animated:YES];
 //    [self presentViewController:vc animated:YES completion:nil];
 }
 
@@ -138,6 +159,11 @@ static NSString * const reuseIdentifier = @"Cell";
     {
         ShowPhotoViewController *showPhotoVC = segue.destinationViewController;
         showPhotoVC.image = sender;
+    }
+    else if ([segue.identifier isEqualToString:@"detail"])
+    {
+        DetailViewController *detail = [segue destinationViewController];
+        detail.image = sender;
     }
 }
 

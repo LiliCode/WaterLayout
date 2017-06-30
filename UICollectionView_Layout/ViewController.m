@@ -7,8 +7,14 @@
 //
 
 #import "ViewController.h"
+#import "UIViewController+Transition.h"
+#import "AlertViewController.h"
+#import "AlertTransitionAnimation.h"
+#import "AlertPresentationController.h"
 
-@interface ViewController ()
+
+
+@interface ViewController ()<UIViewControllerTransitioningDelegate>
 
 @end
 
@@ -22,6 +28,27 @@
 }
 
 
+
+
+
+
+- (IBAction)alert:(UIButton *)sender
+{
+    AlertViewController *alert = [[AlertViewController alloc] init];
+//    alert.transitioningDelegate = self;
+//    alert.modalTransitionStyle = UIModalPresentationCustom;
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+
+//- (UIPresentationController *)presentationControllerForPresentedViewController:(UIViewController *)presented presentingViewController:(UIViewController *)presenting sourceViewController:(UIViewController *)source
+//{
+//    return [[AlertPresentationController alloc] initWithPresentedViewController:presented presentingViewController:presenting];
+//}
+
+
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -30,3 +57,8 @@
 
 
 @end
+
+
+
+
+

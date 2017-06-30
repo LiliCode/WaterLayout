@@ -56,6 +56,9 @@
 		226E9E251F03707600867C82 /* ScaleTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 226E9E241F03707600867C82 /* ScaleTransitionAnimation.m */; };
 		226E9E281F05007400867C82 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 226E9E271F05007400867C82 /* DetailViewController.m */; };
 		226E9E2B1F05042000867C82 /* MoveTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 226E9E2A1F05042000867C82 /* MoveTransitionAnimation.m */; };
+		226E9E2E1F05E7BE00867C82 /* AlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 226E9E2D1F05E7BE00867C82 /* AlertViewController.m */; };
+		226E9E311F05E89200867C82 /* AlertPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 226E9E301F05E89200867C82 /* AlertPresentationController.m */; };
+		226E9E341F06217A00867C82 /* AlertTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 226E9E331F06217A00867C82 /* AlertTransitionAnimation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,6 +145,12 @@
 		226E9E271F05007400867C82 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		226E9E291F05042000867C82 /* MoveTransitionAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveTransitionAnimation.h; sourceTree = "<group>"; };
 		226E9E2A1F05042000867C82 /* MoveTransitionAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoveTransitionAnimation.m; sourceTree = "<group>"; };
+		226E9E2C1F05E7BE00867C82 /* AlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewController.h; sourceTree = "<group>"; };
+		226E9E2D1F05E7BE00867C82 /* AlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewController.m; sourceTree = "<group>"; };
+		226E9E2F1F05E89200867C82 /* AlertPresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertPresentationController.h; sourceTree = "<group>"; };
+		226E9E301F05E89200867C82 /* AlertPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertPresentationController.m; sourceTree = "<group>"; };
+		226E9E321F06217A00867C82 /* AlertTransitionAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertTransitionAnimation.h; sourceTree = "<group>"; };
+		226E9E331F06217A00867C82 /* AlertTransitionAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertTransitionAnimation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +207,8 @@
 				2256B5231EFA59550066B476 /* AppDelegate.m */,
 				2256B5251EFA59550066B476 /* ViewController.h */,
 				2256B5261EFA59550066B476 /* ViewController.m */,
+				226E9E2C1F05E7BE00867C82 /* AlertViewController.h */,
+				226E9E2D1F05E7BE00867C82 /* AlertViewController.m */,
 				2256B5551EFA5A2C0066B476 /* PhotoCollectionViewController.h */,
 				2256B5561EFA5A2C0066B476 /* PhotoCollectionViewController.m */,
 				2256B5581EFA5A9E0066B476 /* PhotoCollectionViewCell.h */,
@@ -301,6 +312,10 @@
 				226E9E241F03707600867C82 /* ScaleTransitionAnimation.m */,
 				226E9E291F05042000867C82 /* MoveTransitionAnimation.h */,
 				226E9E2A1F05042000867C82 /* MoveTransitionAnimation.m */,
+				226E9E2F1F05E89200867C82 /* AlertPresentationController.h */,
+				226E9E301F05E89200867C82 /* AlertPresentationController.m */,
+				226E9E321F06217A00867C82 /* AlertTransitionAnimation.h */,
+				226E9E331F06217A00867C82 /* AlertTransitionAnimation.m */,
 			);
 			name = Transition;
 			sourceTree = "<group>";
@@ -476,9 +491,12 @@
 				2256B5271EFA59550066B476 /* ViewController.m in Sources */,
 				2256B55A1EFA5A9E0066B476 /* PhotoCollectionViewCell.m in Sources */,
 				2256B5241EFA59550066B476 /* AppDelegate.m in Sources */,
+				226E9E311F05E89200867C82 /* AlertPresentationController.m in Sources */,
 				226E9E221F034E6800867C82 /* TransitionAnimation.m in Sources */,
+				226E9E341F06217A00867C82 /* AlertTransitionAnimation.m in Sources */,
 				2256B5571EFA5A2C0066B476 /* PhotoCollectionViewController.m in Sources */,
 				2256B52D1EFA59550066B476 /* UICollectionView_Layout.xcdatamodeld in Sources */,
+				226E9E2E1F05E7BE00867C82 /* AlertViewController.m in Sources */,
 				226E9E1F1F034DC400867C82 /* UIViewController+Transition.m in Sources */,
 				226E9E251F03707600867C82 /* ScaleTransitionAnimation.m in Sources */,
 				2256B5211EFA59550066B476 /* main.m in Sources */,

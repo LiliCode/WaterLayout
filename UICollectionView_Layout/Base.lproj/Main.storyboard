@@ -22,18 +22,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9r-LD-Llo">
-                                <rect key="frame" x="135.5" y="268" width="49" height="32"/>
+                                <rect key="frame" x="127" y="268" width="66" height="32"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="图片集合"/>
                                 <connections>
                                     <segue destination="vrl-VM-zhU" kind="show" id="xI2-hM-Zuh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfu-jV-PfV">
+                                <rect key="frame" x="142.5" y="338" width="35" height="32"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="16"/>
+                                <state key="normal" title="Alert"/>
+                                <connections>
+                                    <action selector="alert:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uQL-em-2SX"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="g9r-LD-Llo" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Ntx-Pg-lOo"/>
+                            <constraint firstItem="rfu-jV-PfV" firstAttribute="top" secondItem="g9r-LD-Llo" secondAttribute="bottom" constant="38" id="OxZ-5T-BXd"/>
                             <constraint firstItem="g9r-LD-Llo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="btW-R3-jiU"/>
+                            <constraint firstItem="rfu-jV-PfV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eNh-Ye-DQf"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Layout" id="A5D-4U-Lie"/>
@@ -61,7 +71,7 @@
                                     <constraint firstAttribute="height" constant="100" id="bfX-eF-sEv"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rE4-UH-CHP">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rE4-UH-CHP">
                                 <rect key="frame" x="9" y="220" width="303" height="340"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <mutableString key="text">可在转场动画发生的同时并行执行其他的动画，其作用与其说协调不如说辅助，主要在 Modal 转场和交互转场取消时使用，其他时候很少用到；遵守&lt;UIViewControllerTransitionCoordinator&gt;协议；由 UIKit 在转场时生成，UIViewController 在 iOS 7 中新增了方法transitionCoordinator()返回一个遵守该协议的对象，且该方法只在该控制器处于转场过程中才返回一个此类对象，不参与转场时返回 nil。
@@ -138,6 +148,8 @@
                                 <subviews>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="oG8-yQ-BLr">
                                         <rect key="frame" x="11" y="1" width="51" height="31"/>
+                                        <color key="onTintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="thumbTintColor" red="0.12549019610000001" green="0.79607843140000001" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="switchMode:" destination="vrl-VM-zhU" eventType="valueChanged" id="jgX-Up-xPE"/>
                                         </connections>
@@ -178,7 +190,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mAM-1q-vRu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3116" y="1173"/>
+            <point key="canvasLocation" x="4111.875" y="1172.5352112676057"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="VkG-QU-yL7">

@@ -14,7 +14,7 @@
 
 
 
-@interface ViewController ()<UIViewControllerTransitioningDelegate>
+@interface ViewController ()
 
 @end
 
@@ -35,16 +35,17 @@
 - (IBAction)alert:(UIButton *)sender
 {
     AlertViewController *alert = [[AlertViewController alloc] init];
-//    alert.transitioningDelegate = self;
-//    alert.modalTransitionStyle = UIModalPresentationCustom;
+    alert.transitioningDelegate = self;
+    alert.modalTransitionStyle = UIModalPresentationCustom;
+    alert.presentTransitionAnimation = [AlertTransitionAnimation transition];
     [self presentViewController:alert animated:YES completion:nil];
 }
 
+- (UIPresentationController *)presentationControllerForPresentedViewController:(UIViewController *)presented presentingViewController:(UIViewController *)presenting sourceViewController:(UIViewController *)source
+{
+    return [[AlertPresentationController alloc] initWithPresentedViewController:presented presentingViewController:presenting];
+}
 
-//- (UIPresentationController *)presentationControllerForPresentedViewController:(UIViewController *)presented presentingViewController:(UIViewController *)presenting sourceViewController:(UIViewController *)source
-//{
-//    return [[AlertPresentationController alloc] initWithPresentedViewController:presented presentingViewController:presenting];
-//}
 
 
 

@@ -89,8 +89,6 @@ static char *kDismissTransitionAnimation = "kDismissTransitionAnimation";
     return self.dismissTransitionAnimation;     //模态 Dismiss方式
 }
 
-
-
 @end
 
 

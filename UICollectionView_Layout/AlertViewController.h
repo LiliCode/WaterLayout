@@ -10,8 +10,6 @@
 
 @interface AlertViewController : UIViewController
 
-@property (strong , nonatomic) UIView *backgroundView;
-
 @property (strong , nonatomic) UIView *contentView;
 
 

@@ -38,13 +38,10 @@
     alert.transitioningDelegate = self;
     alert.modalTransitionStyle = UIModalPresentationCustom;
     alert.presentTransitionAnimation = [AlertTransitionAnimation transition];
+    self.presentationController = [[AlertPresentationController alloc] initWithPresentedViewController:alert presentingViewController:self];
     [self presentViewController:alert animated:YES completion:nil];
 }
 
-- (UIPresentationController *)presentationControllerForPresentedViewController:(UIViewController *)presented presentingViewController:(UIViewController *)presenting sourceViewController:(UIViewController *)source
-{
-    return [[AlertPresentationController alloc] initWithPresentedViewController:presented presentingViewController:presenting];
-}
 
 
 

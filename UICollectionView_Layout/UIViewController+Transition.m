@@ -13,6 +13,7 @@ static char *kPushTransitionAnimation = "kPushTransitionAnimation";
 static char *kPopTransitionAnimation = "kPopTransitionAnimation";
 static char *kPresentTransitionAnimation = "kPresentTransitionAnimation";
 static char *kDismissTransitionAnimation = "kDismissTransitionAnimation";
+static char *kPresentationController = "kPresentationController";
 
 
 @implementation UIViewController (Transition)
@@ -63,6 +64,17 @@ static char *kDismissTransitionAnimation = "kDismissTransitionAnimation";
     return objc_getAssociatedObject(self, &kDismissTransitionAnimation);
 }
 
+- (void)setPresentationController:(UIPresentationController *)presentationController
+{
+    objc_setAssociatedObject(self, &kPresentationController, presentationController, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (UIPresentationController *)presentationController
+{
+    return objc_getAssociatedObject(self, &kPresentationController);
+}
+
+
 #pragma mark - UINavigationControllerDelegate, UIViewControllerTransitioningDelegate
 
 - (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC
@@ -87,6 +99,11 @@ static char *kDismissTransitionAnimation = "kDismissTransitionAnimation";
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
 {
     return self.dismissTransitionAnimation;     //模态 Dismiss方式
+}
+
+- (UIPresentationController *)presentationControllerForPresentedViewController:(UIViewController *)presented presentingViewController:(UIViewController *)presenting sourceViewController:(UIViewController *)source
+{
+    return self.presentationController;
 }
 
 @end

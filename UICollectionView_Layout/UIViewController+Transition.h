@@ -16,6 +16,8 @@
 @property (strong , nonatomic) TransitionAnimation *popTransitionAnimation;
 @property (strong , nonatomic) TransitionAnimation *presentTransitionAnimation;
 @property (strong , nonatomic) TransitionAnimation *dismissTransitionAnimation;
+@property (strong , nonatomic) UIPresentationController *presentationController;
+
 
 
 @end
